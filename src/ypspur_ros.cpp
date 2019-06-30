@@ -884,6 +884,8 @@ public:
         odom.twist.twist.linear.x = v;
         odom.twist.twist.linear.y = 0;
         odom.twist.twist.angular.z = w;
+        odom.twist.covariance[0] = 1;
+        odom.twist.covariance[35] = 1000;
         pubs_["odom"].publish(odom);
 
         odom_trans.header.stamp = ros::Time(t) + ros::Duration(tf_time_offset_);
